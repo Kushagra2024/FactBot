@@ -57,7 +57,7 @@ function SideNavbar() {
                         >
                             <span>
                                 <img
-                                    src="../public/icons/chat_icon_2.png"
+                                    src="/icons/chat_icon_2.png"
                                     className="aspect-square w-7"
                                 />
                             </span>
@@ -75,7 +75,7 @@ function SideNavbar() {
                         >
                             <span>
                                 <img
-                                    src="../public/icons/conversation_history.png"
+                                    src="/icons/conversation_history.png"
                                     className="aspect-square w-7"
                                 />
                             </span>
@@ -95,7 +95,7 @@ function SideNavbar() {
                         >
                             <span>
                                 <img
-                                    src="/public/icons/setting.png"
+                                    src="/icons/setting.png"
                                     className="aspect-square w-7"
                                 />
                             </span>

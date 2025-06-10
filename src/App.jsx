@@ -12,7 +12,7 @@ export const conversationThreadContext = createContext([
 export const userProfileContext = createContext({
     name: "",
     email: "",
-    avatar_url: "/public/icons/person.png",
+    avatar_url: "/icons/person.png",
 });
 
 function App() {
