@@ -2,7 +2,7 @@ function Avatar({ sender }) {
     return (
         <span>
             <img
-                src={`../public/icons/${
+                src={`/public/icons/${
                     sender === "bot" ? "chat_icon" : "person"
                 }.png`}
                 alt="application logo"

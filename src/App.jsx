@@ -12,7 +12,7 @@ export const conversationThreadContext = createContext([
 export const userProfileContext = createContext({
     name: "",
     email: "",
-    avatar_url: "../public/icons/person.png",
+    avatar_url: "/public/icons/person.png",
 });
 
 function App() {
@@ -29,7 +29,7 @@ function App() {
     const [userProfile, setUserProfile] = useState({
         name: "",
         email: "",
-        avatar_url: "../public/icons/person.png",
+        avatar_url: "/public/icons/person.png",
     });
 
     useEffect(() => {

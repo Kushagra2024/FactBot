@@ -43,7 +43,7 @@ function Header({ heading, subheading, icon }) {
             <div className="flex items-center gap-3">
                 <span>
                     <img
-                        src={`../public/icons/${icon}.png`}
+                        src={`/public/icons/${icon}.png`}
                         alt="application logo"
                         className="w-10 aspect-square rounded-full p-1 dark:bg-amber-50"
                     />

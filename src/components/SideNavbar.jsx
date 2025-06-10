@@ -95,7 +95,7 @@ function SideNavbar() {
                         >
                             <span>
                                 <img
-                                    src="../public/icons/setting.png"
+                                    src="/public/icons/setting.png"
                                     className="aspect-square w-7"
                                 />
                             </span>
