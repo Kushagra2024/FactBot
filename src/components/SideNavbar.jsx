@@ -31,7 +31,7 @@ function SideNavbar() {
                     className="w-full px-4 py-[17px] bg-white border border-gray-300 flex justify-center items-center gap-4 dark:bg-gray-900"
                 >
                     <img
-                        src="../public/icons/chat_icon.png"
+                        src="/icons/chat_icon.png"
                         alt="application logo"
                         className="w-[50px] aspect-square border-2 border-blue-600 rounded-[15px] p-0.5 bg-blue-50"
                     />
