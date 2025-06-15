@@ -28,7 +28,7 @@ function SideNavbar() {
             <div className="w-full">
                 <Link
                     to={"/"}
-                    className="w-full px-4 py-[17px] bg-white border border-gray-300 flex justify-center items-center gap-4 dark:bg-gray-900"
+                    className="w-full px-4 py-[17px] bg-white border border-t-0 border-l-0 border-gray-300 flex justify-center items-center gap-4 dark:bg-gray-900"
                 >
                     <img
                         src="/icons/chat_icon.png"
@@ -42,7 +42,7 @@ function SideNavbar() {
             </div>
 
             {/* nav links */}
-            <div className="bg-white grow-1 border border-gray-300 px-3 py-4 flex flex-col gap-6 dark:bg-gray-900">
+            <div className="bg-white grow-1 border border-t-0 border-b-0 border-l-0 border-gray-300 px-3 py-4 flex flex-col gap-6 dark:bg-gray-900">
                 <ul className="flex flex-col gap-2 dark:text-gray-50">
                     <li>
                         <NavLink
@@ -103,9 +103,11 @@ function SideNavbar() {
                         </NavLink>
                     </li>
                 </ul>
+
                 <span className="bg-gray-200 w-full h-0.5 block"></span>
+
                 {/* Profile link */}
-                {userProfile.name && userProfile.email && (
+                {userProfile?.name && userProfile?.email && (
                     <div className="w-full flex flex-col gap-2">
                         <div className="flex gap-2 px-2">
                             <span>

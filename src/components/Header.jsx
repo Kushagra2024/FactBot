@@ -39,7 +39,7 @@ function Header({ heading, subheading, icon }) {
     }, []);
 
     return (
-        <div className="w-full p-4 bg-white dark:bg-gray-900 border border-gray-300 flex items-center justify-between ">
+        <div className="w-full p-4 bg-white dark:bg-gray-900 border border-l-0 border-t-0 border-r-0 border-gray-300 flex items-center justify-between ">
             <div className="flex items-center gap-3">
                 <span>
                     <img

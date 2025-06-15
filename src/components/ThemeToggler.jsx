@@ -1,11 +1,12 @@
 import { useContext } from "react";
 import { themeContext } from "../App";
+import { MoonIcon, SunIcon } from "@heroicons/react/16/solid";
 
 function ThemeToggler() {
     const { isThemeDark, setIsThemeDark } = useContext(themeContext);
-
+    // bg-gray-100 dark:bg-gray-50
     return (
-        <label className="w-12 h-6 rounded-xl border-2 relative cursor-pointer bg-gray-600 dark:bg-gray-50 dark:border-gray-200">
+        <label className="w-16 h-8 rounded-2xl border-2 relative cursor-pointer dark:border-gray-200 bg-yellow-50 dark:bg-blue-50">
             <input
                 type="checkbox"
                 name="theme_toggle"
@@ -16,10 +17,16 @@ function ThemeToggler() {
                 className="opacity-0 cursor-pointer"
             />
             <div
-                className={`h-full aspect-square bg-gray-50 dark:bg-gray-950 absolute top-0 left-0 rounded-full transition-transform duration-300 ${
-                    isThemeDark ? "translate-x-[120%]" : ""
+                className={`h-full aspect-square absolute top-0 left-0 rounded-full transition-transform duration-300 border-2 border-solid border-gray-100 p-0.5 bg-yellow-300 dark:bg-blue-300 ${
+                    isThemeDark ? "translate-x-[120%] " : ""
                 }`}
-            ></div>
+            >
+                {isThemeDark ? (
+                    <MoonIcon className="text-gray-900" />
+                ) : (
+                    <SunIcon className="text-gray-900" />
+                )}
+            </div>
         </label>
     );
 }
