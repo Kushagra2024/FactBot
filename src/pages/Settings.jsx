@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import Cards from "../components/Cards";
 import Header from "../components/Header";
 import ToggleButton from "../components/ToggleButton";
@@ -8,7 +8,7 @@ import {
     TrashIcon,
 } from "@heroicons/react/16/solid";
 import Modal from "../components/Modal";
-import { conversationThreadContext, userProfileContext } from "../App";
+import { useUserProfile } from "../hooks";
 
 function Settings() {
     const defaultValues = {
@@ -34,8 +34,7 @@ function Settings() {
 
     const [isModalOpen, setIsModalOpen] = useState(false);
 
-    const { setMessages } = useContext(conversationThreadContext);
-    const { userProfile, setUserProfile } = useContext(userProfileContext);
+    const { userProfile, setUserProfile } = useUserProfile();
 
     function handleChange(e) {
         const { name, value, type, checked } = e.target;
@@ -103,42 +102,30 @@ function Settings() {
     function handleClearConversation() {
         localStorage.removeItem("factBot-Conversation-Thread");
 
-        setMessages([
-            {
-                sender: "bot",
-                text: "Hello, I am Fact Bot. Give me any topic and I'll share 7 fascinating facts about it. What would you like to learn about, today ?",
-                status: "sent",
-            },
-        ]);
+        // setMessages([
+        //     {
+        //         sender: "bot",
+        //         text: "Hello, I am Fact Bot. Give me any topic and I'll share 7 fascinating facts about it. What would you like to learn about, today ?",
+        //         status: "sent",
+        //     },
+        // ]);
 
         handleModalClose();
     }
 
     useEffect(() => {
-        const locallyStoredSettings = JSON.parse(
-            localStorage.getItem("settings")
-        );
-
-        if (locallyStoredSettings) {
-            setFormData({
-                ...locallyStoredSettings,
-                // first_name: "",
-                // last_name: "",
-                // email: "",
-            });
-
-            setUserProfile((prev) => {
-                return {
-                    ...prev,
-                    name: `${locallyStoredSettings.first_name} ${locallyStoredSettings.last_name}`,
-                    email: locallyStoredSettings.email,
-                };
-            });
-            return;
-        }
-
-        setFormData(defaultValues);
-    }, []);
+        setFormData({
+            first_name: userProfile.fname,
+            last_name: userProfile.lname,
+            email: userProfile.email,
+            timezone: "asia Time (UTC-8)",
+            response_style: userProfile?.chatPreference?.responseStyle,
+            num_of_facts: userProfile?.chatPreference?.noOfFacts,
+            auto_save: userProfile?.chatPreference?.autoSaveConversation,
+            // categories: userProfile?.chatPreference?.preferredFactCategories,
+            data_collection: true,
+        });
+    }, [userProfile]);
 
     return (
         <div className="col-span-4 flex flex-col  col-start-2 ">

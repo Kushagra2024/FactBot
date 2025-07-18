@@ -1,10 +1,10 @@
-import { useContext, useEffect, useRef } from "react";
+import { useEffect, useRef } from "react";
 import Message from "./Message";
-import { themeContext } from "../App";
+import { useTheme } from "../hooks";
 
 function Chatbox({ messages }) {
     const endChatRef = useRef(null);
-    const { isThemeDark } = useContext(themeContext);
+    const { isThemeDark } = useTheme();
 
     useEffect(() => {
         endChatRef.current?.scrollIntoView({ Behavior: "smooth" });

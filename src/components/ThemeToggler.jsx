@@ -1,9 +1,8 @@
-import { useContext } from "react";
-import { themeContext } from "../App";
 import { MoonIcon, SunIcon } from "@heroicons/react/16/solid";
+import { useTheme } from "../hooks";
 
 function ThemeToggler() {
-    const { isThemeDark, setIsThemeDark } = useContext(themeContext);
+    const { isThemeDark, setIsThemeDark } = useTheme();
     // bg-gray-100 dark:bg-gray-50
     return (
         <label className="w-16 h-8 rounded-2xl border-2 relative cursor-pointer dark:border-gray-200 bg-yellow-50 dark:bg-blue-50">

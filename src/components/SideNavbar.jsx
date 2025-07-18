@@ -1,26 +1,12 @@
-import { useContext, useEffect } from "react";
 import { Link, NavLink } from "react-router-dom";
-import { userProfileContext } from "../App";
+import { useAuth, useUserProfile } from "../hooks";
 
 function SideNavbar() {
-    const { userProfile, setUserProfile } = useContext(userProfileContext);
+    const { userProfile } = useUserProfile();
+    const { logout } = useAuth();
 
-    useEffect(() => {
-        const locallyStoredSettings = JSON.parse(
-            localStorage.getItem("settings")
-        );
-
-        if (locallyStoredSettings) {
-            setUserProfile((prev) => {
-                return {
-                    ...prev,
-                    name: `${locallyStoredSettings.first_name} ${locallyStoredSettings.last_name}`,
-                    email: locallyStoredSettings.email,
-                };
-            });
-            return;
-        }
-    }, []);
+    // console.log("side navbar -", Date.now().toLocaleString());
+    // console.log("UserProfile: ", userProfile);
 
     return (
         <nav className="col-span-1 flex flex-col fixed top-0 left-0 w-1/5 h-full">
@@ -64,7 +50,7 @@ function SideNavbar() {
                             <p>Chat</p>
                         </NavLink>
                     </li>
-                    {/* <li>
+                    <li>
                         <NavLink
                             to={"conversation-history"}
                             className={({ isActive }) =>
@@ -81,7 +67,7 @@ function SideNavbar() {
                             </span>
                             <p>Conversation History</p>
                         </NavLink>
-                    </li> */}
+                    </li>
                     <li>
                         <NavLink
                             to={"settings"}
@@ -107,33 +93,33 @@ function SideNavbar() {
                 <span className="bg-gray-200 w-full h-0.5 block"></span>
 
                 {/* Profile link */}
-                {userProfile?.name && userProfile?.email && (
-                    <div className="w-full flex flex-col gap-2">
-                        <div className="flex gap-2 px-2">
-                            <span>
-                                <img
-                                    src={userProfile.avatar_url}
-                                    alt=""
-                                    className="aspect-square w-11"
-                                />
-                            </span>
-                            <div className="flex flex-col">
-                                <p>{userProfile.name}</p>
-                                <p className="text-xs text-gray-500">
-                                    {userProfile.email}
-                                </p>
-                            </div>
+                {/* {userProfile?.name && userProfile?.email && ( */}
+                <div className="w-full flex flex-col gap-2">
+                    <div className="flex gap-2 px-2">
+                        <span>
+                            <img
+                                src={userProfile?.avatar}
+                                alt="user_avatar"
+                                className="aspect-square w-11 rounded-full"
+                            />
+                        </span>
+                        <div className="flex flex-col">
+                            <p className="dark: text-gray-400">{`${userProfile?.fname} ${userProfile?.lname}`}</p>
+                            <p className="text-xs text-gray-500">
+                                {userProfile?.email}
+                            </p>
                         </div>
-                        {/* <div>
-                            <button
-                                className="w-full rounded-2xl bg-gray-200 p-2 active:scale-95 hover:bg-blue-200 cursor-pointer"
-                                onClick={handleUserLogout}
-                            >
-                                Logout
-                            </button>
-                        </div> */}
                     </div>
-                )}
+                    <div>
+                        <button
+                            className="w-full rounded-2xl bg-gray-200 p-2 active:scale-95 hover:bg-blue-200 cursor-pointer"
+                            onClick={logout}
+                        >
+                            Logout
+                        </button>
+                    </div>
+                </div>
+                {/* )} */}
             </div>
         </nav>
     );

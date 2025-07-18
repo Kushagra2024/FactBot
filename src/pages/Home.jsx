@@ -1,12 +1,11 @@
-import { useContext } from "react";
 import Chatbox from "../components/Chatbox";
 import Header from "../components/Header";
 import Typingbox from "../components/Typingbox";
 import { useEffect } from "react";
-import { conversationThreadContext } from "../App";
+import useConversationThread from "../hooks/useConversationThread";
 
-function Homepage() {
-    const { messages, setMessages } = useContext(conversationThreadContext);
+function Home() {
+    const { messages, setMessages } = useConversationThread();
 
     useEffect(() => {
         let locallyStoredChat = JSON.parse(
@@ -30,6 +29,8 @@ function Homepage() {
         );
     }, []);
 
+    // console.log("home page - ", Date.now().toLocaleString());
+
     return (
         <div className="h-screen col-span-4 flex flex-col col-start-2">
             {/* header */}
@@ -48,4 +49,4 @@ function Homepage() {
     );
 }
 
-export default Homepage;
+export default Home;
